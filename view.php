@@ -3,6 +3,7 @@
 
 <head>
     <title>Laomees Lagunovi Laoprogramm</title>
+    <img src="lagunov.jpg" style="width:480px;height:360px;">
     <meta charset="utf-8">
 
     <style>
