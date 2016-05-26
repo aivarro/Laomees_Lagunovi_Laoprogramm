@@ -1,13 +1,17 @@
 <!doctype html>
 <html>
     <head>
+        <h1 align="center">Laomees Lagunovi Laoprogramm</h1>
+        <div style="display: flex; justify-content: center;">
+        <img src="lagunov.jpg" style="width:480px;height:360px;" align="middle">
+        </div>
         <meta charset="utf8" />
         <title>Logi sisse</title>
     </head>
-    <body>
+    <body background="papp.jpg">
 
         <?php foreach (message_list() as $message):?>
-            <p style="border: 1px solid blue; background: #EEE;">
+            <p style="border: 1px solid blue; background: #050505; text-align: center; color: white;">
                 <?= $message; ?>
             </p>
         <?php endforeach; ?>
@@ -35,7 +39,7 @@
             </table>
 
             <p>
-                <button type="submit">Logi sisse</button> või <a href="<?= $_SERVER['PHP_SELF']; ?>?view=register">Registreeri konto</a>
+                <button type="submit">Logi sisse</button> või <button><a href="<?= $_SERVER['PHP_SELF']; ?>?view=register">Registreeri konto</a></button>
             </p>
 
         </form>

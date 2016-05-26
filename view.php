@@ -2,8 +2,10 @@
 <html>
 
 <head>
-    <title>Laomees Lagunovi Laoprogramm</title>
-    <img src="lagunov.jpg" style="width:480px;height:360px;">
+    <title align="center">Laomees Lagunovi Laoprogramm</title>
+    <div style="display: flex; justify-content: center;">
+    <img src="lagunov.jpg" style="width:480px;height:360px;" align="middle">
+    </div>
     <meta charset="utf-8">
 
     <style>
@@ -14,10 +16,10 @@
 
 </head>
 
-<body>
+<body background="papp.jpg">
 
     <?php foreach (message_list() as $message):?>
-        <p style="border: 1px solid blue; background: #EEE;">
+        <p style="border: 1px solid blue; background: #050505; text-align: center; color: white;">
             <?= $message; ?>
         </p>
     <?php endforeach; ?>
@@ -30,7 +32,7 @@
         </form>
     </div>
 
-    <h1>Laomees Lagunovi Laoprogramm</h1>
+    <h1 align="center">Laomees Lagunovi Laoprogramm</h1>
 
     <p id="kuva-nupp">
         <button type="button">Kuva lisamise vorm</button>

@@ -90,18 +90,18 @@ function controller_user()
 function controller_register($kasutajanimi, $parool)
 {
     if ($kasutajanimi == '' || $parool == '') {
-        message_add('Vigased sisendandmed');
+        message_add('Vigased sisendandmed!');
 
         return false;
     }
 
     if (model_user_add($kasutajanimi, $parool)) {
-        message_add('Konto on registreeritud');
+        message_add('Konto on registreeritud.');
 
         return true;
     }
 
-    message_add('Konto registreerimine ebaõnnestus, kasutajanimi võib olla juba võetud');
+    message_add('Konto registreerimine ebaõnnestus, kasutajanimi võib olla juba võetud!');
 
     return false;
 }
@@ -110,14 +110,14 @@ function controller_register($kasutajanimi, $parool)
 function controller_login($kasutajanimi, $parool)
 {
     if ($kasutajanimi == '' || $parool == '') {
-        message_add('Vigased sisendandmed');
+        message_add('Vigased sisendandmed!');
 
         return false;
     }
 
     $id = model_user_get($kasutajanimi, $parool);
     if (!$id) {
-        message_add('Vigane kasutajanimi või parool');
+        message_add('Vigane kasutajanimi või parool!');
 
         return false;
     }
@@ -133,7 +133,7 @@ function controller_login($kasutajanimi, $parool)
 // Logib kasutaja välja
 function controller_logout()
 {
-    // muuda sessiooni ku?psis kehtetuks
+    // muuda sessiooni küpsis kehtetuks
     if (isset($_COOKIE[session_name()])) {
         setcookie(session_name(), '', time() - 42000, '/');
     }
@@ -143,7 +143,7 @@ function controller_logout()
     // lõpeta sessioon
     session_destroy();
 
-    message_add('Oled nüüd välja logitud');
+    message_add('Oled nüüd välja logitud.');
 
     return true;
 }
