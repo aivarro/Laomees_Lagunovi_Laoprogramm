@@ -42,7 +42,7 @@ function controller_delete($id)
     }
 
     if (model_delete($id)) {
-        message_add('Kustutati rida '.$id);
+        message_add('Kustutati rida');
 
         return true;
     }
@@ -67,7 +67,7 @@ function controller_update($id, $kogus)
     }
 
     if (model_update($id, $kogus)) {
-        message_add('Uuendati andmeid real '.$id);
+        message_add('Andmeid uuendati');
 
         return true;
     }
@@ -143,7 +143,7 @@ function controller_logout()
     // lõpeta sessioon
     session_destroy();
 
-    message_add('Oled nüüd välja logitud.');
+    message_add('Oled nüüd välja logitud');
 
     return true;
 }
@@ -163,7 +163,7 @@ function message_list()
     if (empty($_SESSION['messages'])) {
         return array();
     }
-    $messages = $_SESSION['messages'];
+    $messages             = $_SESSION['messages'];
     $_SESSION['messages'] = array();
 
     return $messages;

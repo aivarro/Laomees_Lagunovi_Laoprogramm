@@ -1,9 +1,9 @@
 <?php
 
-$host = 'localhost';
-$user = 'test';
-$pass = 't3st3r123';
-$db = 'test';
+$host   = 'localhost';
+$user   = 'test';
+$pass   = 't3st3r123';
+$db     = 'test';
 $prefix = 'aromandi';
 
 $l = mysqli_connect($host, $user, $pass, $db);
@@ -19,11 +19,11 @@ mysqli_query($l, 'SET CHARACTER SET UTF8');
 function model_load($page)
 {
     global $l, $prefix;
-    $max = 10;
+    $max   = 10;
     $start = ($page - 1) * $max;
 
-    $query = 'SELECT Id, Nimetus, Kogus FROM '.$prefix.'__kaubad ORDER BY Nimetus ASC LIMIT ?,?';
-    $stmt = mysqli_prepare($l, $query);
+    $query = 'SELECT Id, Nimetus, Kogus FROM ' . $prefix . '__kaubad ORDER BY Nimetus ASC LIMIT ?,?';
+    $stmt  = mysqli_prepare($l, $query);
     if (mysqli_error($l)) {
         echo mysqli_error($l);
         exit;
@@ -37,7 +37,7 @@ function model_load($page)
         $rows[] = array(
             'id' => $id,
             'nimetus' => $nimetus,
-            'kogus' => $kogus,
+            'kogus' => $kogus
         );
     }
 
@@ -58,8 +58,8 @@ function model_add($nimetus, $kogus)
 {
     global $l, $prefix;
 
-    $query = 'INSERT INTO '.$prefix.'__kaubad (Nimetus, Kogus) VALUES (?, ?)';
-    $stmt = mysqli_prepare($l, $query);
+    $query = 'INSERT INTO ' . $prefix . '__kaubad (Nimetus, Kogus) VALUES (?, ?)';
+    $stmt  = mysqli_prepare($l, $query);
     if (mysqli_error($l)) {
         echo mysqli_error($l);
         exit;
@@ -86,8 +86,8 @@ function model_delete($id)
 {
     global $l, $prefix;
 
-    $query = 'DELETE FROM '.$prefix.'__kaubad WHERE Id=? LIMIT 1';
-    $stmt = mysqli_prepare($l, $query);
+    $query = 'DELETE FROM ' . $prefix . '__kaubad WHERE Id=? LIMIT 1';
+    $stmt  = mysqli_prepare($l, $query);
     if (mysqli_error($l)) {
         echo mysqli_error($l);
         exit;
@@ -115,8 +115,8 @@ function model_update($id, $kogus)
 {
     global $l, $prefix;
 
-    $query = 'UPDATE '.$prefix.'__kaubad SET Kogus=? WHERE Id=? LIMIT 1';
-    $stmt = mysqli_prepare($l, $query);
+    $query = 'UPDATE ' . $prefix . '__kaubad SET Kogus=? WHERE Id=? LIMIT 1';
+    $stmt  = mysqli_prepare($l, $query);
     if (mysqli_error($l)) {
         echo mysqli_error($l);
         exit;
@@ -146,8 +146,8 @@ function model_user_add($kasutajanimi, $parool)
 
     $hash = password_hash($parool, PASSWORD_DEFAULT);
 
-    $query = 'INSERT INTO '.$prefix.'__kasutajad (Kasutajanimi, Parool) VALUES (?, ?)';
-    $stmt = mysqli_prepare($l, $query);
+    $query = 'INSERT INTO ' . $prefix . '__kasutajad (Kasutajanimi, Parool) VALUES (?, ?)';
+    $stmt  = mysqli_prepare($l, $query);
     if (mysqli_error($l)) {
         echo mysqli_error($l);
         exit;
@@ -175,8 +175,8 @@ function model_user_get($kasutajanimi, $parool)
 {
     global $l, $prefix;
 
-    $query = 'SELECT Id, Parool FROM '.$prefix.'__kasutajad WHERE Kasutajanimi=? LIMIT 1';
-    $stmt = mysqli_prepare($l, $query);
+    $query = 'SELECT Id, Parool FROM ' . $prefix . '__kasutajad WHERE Kasutajanimi=? LIMIT 1';
+    $stmt  = mysqli_prepare($l, $query);
     if (mysqli_error($l)) {
         echo mysqli_error($l);
         exit;

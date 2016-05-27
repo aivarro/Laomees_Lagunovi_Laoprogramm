@@ -26,31 +26,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             case 'add':
                 $nimetus = $_POST['nimetus'];
-                $kogus = intval($_POST['kogus']);
-                $result = controller_add($nimetus, $kogus);
+                $kogus   = intval($_POST['kogus']);
+                $result  = controller_add($nimetus, $kogus);
                 break;
 
             case 'delete':
-                $id = intval($_POST['id']);
+                $id     = intval($_POST['id']);
                 $result = controller_delete($id);
                 break;
 
             case 'update':
-                $id = intval($_POST['id']);
-                $kogus = intval($_POST['kogus']);
+                $id     = intval($_POST['id']);
+                $kogus  = intval($_POST['kogus']);
                 $result = controller_update($id, $kogus);
                 break;
 
             case 'register':
                 $kasutajanimi = $_POST['kasutajanimi'];
-                $parool = $_POST['parool'];
-                $result = controller_register($kasutajanimi, $parool);
+                $parool       = $_POST['parool'];
+                $result       = controller_register($kasutajanimi, $parool);
                 break;
 
             case 'login':
                 $kasutajanimi = $_POST['kasutajanimi'];
-                $parool = $_POST['parool'];
-                $result = controller_login($kasutajanimi, $parool);
+                $parool       = $_POST['parool'];
+                $result       = controller_login($kasutajanimi, $parool);
                 break;
 
             case 'logout':
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         message_add('Vigane päring, CSRF token ei vasta oodatule!');
     }
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    header('Location: ' . $_SERVER['PHP_SELF']);
     // POST päringu puhul me sisu ei näita
     exit;
 }
@@ -82,7 +82,7 @@ if (!empty($_GET['view'])) {
     }
 } else {
     if (!controller_user()) {
-        header('Location: '.$_SERVER['PHP_SELF'].'?view=login');
+        header('Location: ' . $_SERVER['PHP_SELF'] . '?view=login');
         exit;
     }
 

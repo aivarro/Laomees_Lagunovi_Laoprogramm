@@ -10,11 +10,15 @@
     </head>
     <body background="papp.jpg">
 
-        <?php foreach (message_list() as $message):?>
+        <?php
+foreach (message_list() as $message):
+?>
             <p style="border: 1px solid blue; background: #050505; text-align: center; color: white;">
                 <?= $message; ?>
             </p>
-        <?php endforeach; ?>
+        <?php
+endforeach;
+?>
 
         <h1>Logi sisse</h1>
 
@@ -25,13 +29,13 @@
 
             <table>
                 <tr>
-                    <td>Kasutajanimi</td>
+                    <td><b>Kasutajanimi</b></td>
                     <td>
                         <input type="text" name="kasutajanimi" required>
                     </td>
                 </tr>
                 <tr>
-                    <td>Parool</td>
+                    <td><b>Parool</b></td>
                     <td>
                         <input type="password" name="parool" required>
                     </td>
@@ -39,7 +43,7 @@
             </table>
 
             <p>
-                <button type="submit">Logi sisse</button> või <button><a href="<?= $_SERVER['PHP_SELF']; ?>?view=register">Registreeri konto</a></button>
+                <button type="submit">Logi sisse</button><b> või </b><button><a href="<?= $_SERVER['PHP_SELF']; ?>?view=register">Registreeri konto</a></button>
             </p>
 
         </form>

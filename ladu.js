@@ -10,7 +10,7 @@ document.querySelector('#kuva-nupp button').addEventListener('click',
      * Funktsioon teeb vormi nähtavaks ning peidab "peida" nupu
      * @event
      */
-    function () {
+    function() {
         document.getElementById('lisa-vorm').style.display = 'block';
         document.getElementById('kuva-nupp').style.display = 'none';
     });
@@ -24,7 +24,7 @@ document.querySelector('#peida-nupp button').addEventListener('click',
      * Funktsioon peidab vormi ning teeb nähtavaks "peida" nupu
      * @event
      */
-    function () {
+    function() {
         document.getElementById('lisa-vorm').style.display = 'none';
         document.getElementById('kuva-nupp').style.display = 'block';
     });
@@ -40,7 +40,7 @@ document.getElementById('lisa-vorm').addEventListener('submit',
      * @event
      * @param  {Event} event Sündmuse info
      */
-    function (event) {
+    function(event) {
         // loeme tekstikastidest kasutaja sisestatud andmed
         var nimetus = document.getElementById('nimetus').value;
         var kogus = Number(document.getElementById('kogus').value);

@@ -4,7 +4,7 @@
 <head>
     <title align="center">Laomees Lagunovi Laoprogramm</title>
     <div style="display: flex; justify-content: center;">
-    <img src="lagunov.jpg" style="width:480px;height:360px;" align="middle">
+    <img src="lagunov.jpg" style="width:480px; height:360px;" align="middle">
     </div>
     <meta charset="utf-8">
 
@@ -18,11 +18,15 @@
 
 <body background="papp.jpg">
 
-    <?php foreach (message_list() as $message):?>
+    <?php
+foreach (message_list() as $message):
+?>
         <p style="border: 1px solid blue; background: #050505; text-align: center; color: white;">
             <?= $message; ?>
         </p>
-    <?php endforeach; ?>
+    <?php
+endforeach;
+?>
 
     <div style="float: right;">
         <form method="post"  action="<?= $_SERVER['PHP_SELF']; ?>">
@@ -49,13 +53,13 @@
 
         <table>
             <tr>
-                <td>Nimetus</td>
+                <td><b>Nimetus</b></td>
                 <td>
                     <input type="text" id="nimetus" name="nimetus">
                 </td>
             </tr>
             <tr>
-                <td>Kogus</td>
+                <td><b>Kogus</b></td>
                 <td>
                     <input type="number" id="kogus" name="kogus">
                 </td>
@@ -68,7 +72,7 @@
 
     </form>
 
-    <table id="ladu" border="1">
+    <table id="ladu" border="1" style="background: #050505; color: white;">
         <thead>
             <tr>
                 <th>Nimetus</th>
@@ -80,22 +84,23 @@
         <tbody>
 
         <?php
-        // koolon tsükli lõpus tähendab, et tsükkel koosneb HTML osast
-        foreach (model_load($page) as $rida): ?>
+// koolon tsükli lõpus tähendab, et tsükkel koosneb HTML osast
+foreach (model_load($page) as $rida):
+?>
 
             <tr>
                 <td>
                     <?=
-                        // vältimaks pahatahtlikku XSS sisu, kus kasutaja sisestab õige
-                        // info asemel <script> tag'i, peame tekstiväljundis asendama kõik HTML erisümbolid
-                        htmlspecialchars($rida['nimetus']);
-                    ?>
+    // vältimaks pahatahtlikku XSS sisu, kus kasutaja sisestab õige
+
+    // info asemel <script> tag'i, peame tekstiväljundis asendama kõik HTML erisümbolid
+        htmlspecialchars($rida['nimetus']); ?>
                 </td>
                 <td>
-                    <form method="post" action="<?= $_SERVER['PHP_SELF'];?>">
+                    <form method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="action" value="update">
-                        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'];?>">
-                        <input type="hidden" name="id" value="<?= $rida['id'];?>">
+                        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
+                        <input type="hidden" name="id" value="<?= $rida['id']; ?>">
 
                         <input type="number" style="width: 5em; text-align: right;" name="kogus" value="<?= $rida['kogus']; ?>">
                         <button type="submit">Uuenda</button>
@@ -103,7 +108,7 @@
                 </td>
                 <td>
 
-                    <form method="post" action="<?= $_SERVER['PHP_SELF'];?>">
+                    <form method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
                         <input type="hidden" name="id" value="<?= $rida['id']; ?>">
@@ -113,18 +118,26 @@
                 </td>
             </tr>
 
-        <?php endforeach; ?>
+        <?php
+endforeach;
+?>
 
         </tbody>
     </table>
 
     <p>
-        <a href="<?= $_SERVER['PHP_SELF']; ?>?page=<?= $page - 1; ?>">
+        <a href="<?= $_SERVER['PHP_SELF']; ?>?page=<?= $page - 1; ?>" style="color: black;">
+            <b>
             Eelmine lehekülg
-        </a>
+            </b>
+        </a style="color: black;">
+        <b>
         |
-        <a href="<?= $_SERVER['PHP_SELF']; ?>?page=<?= $page + 1; ?>">
+        </b>
+        <a href="<?= $_SERVER['PHP_SELF']; ?>?page=<?= $page + 1; ?>" style="color: black;">
+            <b>
             Järgmine lehekülg
+          </b>
         </a>
     </p>
 
